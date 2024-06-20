@@ -7,11 +7,11 @@ public class Main
 {
     public static void main(String[] args) {
 
-        Scanner in = new Scanner(System.in);
-        Calcul calcul = new Calcul();
+   //     Scanner in = new Scanner(System.in);
+   //     Calcul calcul = new Calcul();
 //System.out.println("\nInput: ");
         String input = "";
-        calcul.calc(input);
+        Calcul.calc(input);
 
 
     }
@@ -19,27 +19,27 @@ public class Main
 }
 
 class Calcul {
-    private String input;
+  public String input;
     public Calcul() {
     }
-    public void setInput(String input) {
-        this.input = input;
-    }
+//    public void setInput(String input) {
+//        this.input = input;
+//    }
 
-    public String getInput() {
-        return input;
-    }
+//    public String getInput() {
+//        return input;
+//    }
 
     public static String calc(String input) {
 
 
-        Scanner in = new Scanner(System.in);
+   //     Scanner in = new Scanner(System.in);
 
 
         while (true) {
 
             Scanner s = new Scanner(System.in);
-            String exception1 = "throws Exception";
+        //    String exception1 = "throws Exception";
             System.out.println("\nInput: ");
 
             input = s.nextLine();
@@ -47,7 +47,8 @@ class Calcul {
             input = input.trim();
             System.out.println("\nOutput: ");
 
-            String[] calc_input= input.split(" ");
+
+
 
             input = input.replace(" ", "");
 
@@ -76,24 +77,27 @@ class Calcul {
 
             int number1 = 0;
             int number2 = 0;
-            int result = 0;
-            int resultArab = 0;
+            int result ;
+            int resultArab ;
 
 
             String[] numbers = input.split(znacStr);
-            String[] calc_input1;
-            calc_input1 = input.split(znacStr);
+           // String[] calc_input1;
 
 
-            if (numbers.length == 2 &&calc_input1.length == 2) {
-                number1 = romanNumeral(numbers[0]);
-                number2 = romanNumeral(numbers[1]);
 
-            }else {result = 0;
+      try {
+          if (numbers.length == 2 ) {
+              number1 = romanNumeral(numbers[0]);
+              number2 = romanNumeral(numbers[1]);
+
+          }
+      }catch (Exception  e) {
+                System.out.println("throws Exception");
             }
 
             if (number1 == 0 | number2 == 0){
-                result = 0;
+
 
 
                 try {
@@ -109,11 +113,8 @@ class Calcul {
                         System.out.println(+resultArab);
 
 
-                    }}catch (NumberFormatException e) {
-                    System.out.println("throws Exception ");
-                }catch ( ArrayIndexOutOfBoundsException e) {
-                    System.out.println("throws Exception ");
-                } catch (ArithmeticException e) {
+                    }
+                }catch (NumberFormatException | ArrayIndexOutOfBoundsException | ArithmeticException e) {
                     System.out.println("throws Exception ");
                 }
             }else {
@@ -122,12 +123,12 @@ class Calcul {
                     result = calculate(number1, number2, znac);
                     String resultRom = romanSolution(result);
                     System.out.println(resultRom);
-                } catch (Exception e) {
-                    System.out.println("throws Exception");
+                } catch (NumberFormatException | ArrayIndexOutOfBoundsException | ArithmeticException e) {
+                    System.out.println("throws Exception");//ArrayIndexOutOfBoundsException
                 }
             }
         }
-    }
+   }
 
     public static int calculate(int x1, int x2, char z) {
         int result = 0;
@@ -189,7 +190,8 @@ class Calcul {
                 "LXXX", "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII",
                 "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"
         };
-        String q = romanAll[arabNumeral];
+        String q;
+        q = romanAll[arabNumeral];
         return q;
     }
 }
