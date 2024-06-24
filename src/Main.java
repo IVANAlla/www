@@ -105,7 +105,7 @@ class Calcul {
                     number1 = Integer.parseInt(numbers[0]);
                     number2 = Integer.parseInt(numbers[1]);
 
-                    if (number1 >10 || number2 > 10 || number1 < 0 || number2 < 0 ||numbers.length != 2) {
+                    if (number1 >10 || number2 > 10 || number1 <= 0 || number2 <= 0 ||numbers.length != 2) {
                         System.out.println("throws Exception ");
 
                     }else {
